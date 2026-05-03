@@ -15,10 +15,6 @@ fp-info-cache
 ~*.kicad_*
 *.rpt
 
-# Fusion 360
-*.f3d
-*.f3z
-
 # Editors
 .vscode/
 *.swp
