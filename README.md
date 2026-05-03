@@ -1,4 +1,4 @@
-# Rocket Gauge
+# E61 Gauge
 
 An analog temperature gauge for E61 espresso machines. A custom PCB drives a VID6606 stepper motor gauge needle, reading temperature from an NTC thermistor. The gauge connects via BLE to a web app for calibration and real-time monitoring.
 
