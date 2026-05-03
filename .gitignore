@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# KiCad
+*-backups/
+*.kicad_sch-bak
+*.kicad_sch_old
+fp-info-cache
+*.lck
+~*.kicad_*
+*.rpt
+
+# Fusion 360
+*.f3d
+*.f3z
+
+# Editors
+.vscode/
+*.swp

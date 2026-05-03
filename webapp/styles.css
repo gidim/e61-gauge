@@ -1,0 +1,572 @@
+/* CSS Variables for theming */
+:root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #3d3d3d;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-muted: #707070;
+    --accent: #e67e22;
+    --accent-hover: #d35400;
+    --success: #27ae60;
+    --warning: #f39c12;
+    --danger: #e74c3c;
+    --zone-cold: #3498db;
+    --zone-green: #27ae60;
+    --zone-hot: #e74c3c;
+    --border: #404040;
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Reset and base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* Header */
+.header {
+    background-color: var(--bg-secondary);
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.app-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--danger);
+    transition: background-color 0.3s;
+}
+
+.status-indicator.connected {
+    background-color: var(--success);
+}
+
+.device-name {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: white;
+}
+
+.btn-primary:hover, .btn-primary:active {
+    background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover, .btn-secondary:active {
+    background-color: var(--bg-secondary);
+}
+
+.btn-success {
+    background-color: var(--success);
+    color: white;
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    color: white;
+}
+
+.btn-small {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Tab Navigation */
+.tabs {
+    display: flex;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tab {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-tertiary);
+}
+
+.tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* Main content */
+.main {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.panel {
+    display: none;
+}
+
+.panel.active {
+    display: block;
+}
+
+/* Cards */
+.card {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+}
+
+.card-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+}
+
+/* Temperature display */
+.temp-display {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.temp-value {
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.temp-unit {
+    font-size: 2rem;
+    color: var(--text-secondary);
+}
+
+.temp-zone {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.zone-cold {
+    background-color: rgba(52, 152, 219, 0.2);
+    color: var(--zone-cold);
+}
+
+.zone-green {
+    background-color: rgba(39, 174, 96, 0.2);
+    color: var(--zone-green);
+}
+
+.zone-hot {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: var(--zone-hot);
+}
+
+.zone-unknown {
+    background-color: rgba(128, 128, 128, 0.2);
+    color: var(--text-secondary);
+}
+
+/* Battery display */
+.battery-display {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.battery-icon {
+    position: relative;
+    width: 48px;
+    height: 24px;
+    border: 2px solid var(--text-secondary);
+    border-radius: 4px;
+}
+
+.battery-icon::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 10px;
+    background-color: var(--text-secondary);
+    border-radius: 0 2px 2px 0;
+}
+
+.battery-level {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    bottom: 2px;
+    background-color: var(--success);
+    border-radius: 2px;
+    transition: width 0.3s;
+}
+
+.battery-level.low {
+    background-color: var(--danger);
+}
+
+.battery-level.medium {
+    background-color: var(--warning);
+}
+
+.battery-info {
+    flex: 1;
+}
+
+.battery-percent {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.battery-voltage {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.charging-indicator {
+    color: var(--success);
+    font-size: 0.875rem;
+}
+
+/* Quick actions */
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+/* Mode indicator */
+.mode-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background-color: var(--bg-tertiary);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.mode-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.mode-value {
+    font-weight: 600;
+}
+
+.mode-value.cal {
+    color: var(--warning);
+}
+
+.mode-value.work {
+    color: var(--success);
+}
+
+/* Step controls */
+.step-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.step-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 12px;
+}
+
+.step-input {
+    flex: 1;
+    text-align: center;
+}
+
+/* Form inputs */
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.input-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.input-row .input {
+    flex: 1;
+}
+
+/* Zone status */
+.zone-status {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.zone-item {
+    padding: 0.75rem;
+    border-radius: 8px;
+    background-color: var(--bg-tertiary);
+}
+
+.zone-item.cold {
+    border-left: 3px solid var(--zone-cold);
+}
+
+.zone-item.green {
+    border-left: 3px solid var(--zone-green);
+}
+
+.zone-item.hot {
+    border-left: 3px solid var(--zone-hot);
+}
+
+.zone-count {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.zone-name {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+/* Terminal */
+.terminal {
+    background-color: #0d0d0d;
+    border-radius: 8px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.875rem;
+    overflow: hidden;
+}
+
+.terminal-output {
+    height: 300px;
+    overflow-y: auto;
+    padding: 1rem;
+    line-height: 1.6;
+}
+
+.terminal-line {
+    margin-bottom: 0.25rem;
+}
+
+.terminal-line.sent {
+    color: var(--accent);
+}
+
+.terminal-line.sent::before {
+    content: '> ';
+}
+
+.terminal-line.received {
+    color: var(--success);
+}
+
+.terminal-line.error {
+    color: var(--danger);
+}
+
+.terminal-line.system {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.terminal-input-row {
+    display: flex;
+    border-top: 1px solid var(--border);
+}
+
+.terminal-input {
+    flex: 1;
+    padding: 0.75rem;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: var(--bg-tertiary);
+    border: none;
+    color: var(--text-primary);
+}
+
+.terminal-input:focus {
+    outline: none;
+}
+
+.terminal-send {
+    padding: 0.75rem 1rem;
+    border-radius: 0;
+}
+
+/* Utility classes */
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.text-center { text-align: center; }
+.text-muted { color: var(--text-secondary); }
+.text-small { font-size: 0.875rem; }
+
+/* Responsive adjustments */
+@media (max-width: 360px) {
+    html {
+        font-size: 14px;
+    }
+
+    .temp-value {
+        font-size: 3rem;
+    }
+
+    .step-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+}
+
+/* Not supported warning */
+.not-supported {
+    text-align: center;
+    padding: 2rem;
+}
+
+.not-supported h2 {
+    color: var(--danger);
+    margin-bottom: 1rem;
+}
+
+.not-supported p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Action buttons row */
+.action-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.action-row .btn {
+    flex: 1;
+    min-width: 100px;
+}

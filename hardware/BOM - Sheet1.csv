@@ -1,0 +1,12 @@
+Reference,Qty,Value,Assembly Status,Exclude from BOM,Footprint,Manufacturer,MPN,Datasheet
+Battery1,1,Wire Connection,DNP/Hand Solder,,TestPoint:THT_2PAD_SOLDER_P5.08MM_GIDEON,N/A,N/A,~
+C1,1,10 µF,Aseemble ,,Capacitor_Tantalum_SMD:CP_EIA-1608-08_AVX-J,Vishay,293D106X9010B2TE3,
+"C2,C3",2,0.1uF,Assemble,,Capacitor_SMD:C_0805_2012Metric,YAGEO,CC0805KRX7R9BB104,~
+J1,1,5v Boost,Assemble,,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,Molex ,22284030,~
+M1,1,Stepper_Motor_bipolar,Assemble,,Connector_JST:JST_SM04B-SRSS-TB_LF__SN_,JST,SM04B-NSHSS-TB(LF)(SN),
+NTC1,1,Wire Connection,DNP/Hand Solder,Exclude,TestPoint:THT_2PAD_SOLDER_P5.08MM_GIDEON,,,~
+Q1,1,MMBT2222A,Assemble,,Package_TO_SOT_SMD:SOT-23,Onsemi,MMBT2222ALT1G,~
+"R1,R2,R3",3,10k,Assemble,,Resistor_SMD:R_0805_2012Metric,Yageo,RC0805FR-0710KL,~
+SW1,1,Wire Connection,DNP/Hand Solder,Exclude,TestPoint:THT_2PAD_SOLDER_P5.08MM_GIDEON,,,~
+U2,1,VID6606,Assemble,,Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm,STI,STI6606Z,
+U3,1,XIAO-nRF52840-DIP,DNP/Hand Solder,Exclude,XIAO_nRF52840:XIAO-nRF52840-DIP,,,

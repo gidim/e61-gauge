@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>Rocket Gauge</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">Rocket Gauge</h1>
+                <div class="connection-status">
+                    <span id="deviceName" class="device-name">Not connected</span>
+                    <div id="statusIndicator" class="status-indicator"></div>
+                    <button id="connectBtn" class="btn btn-primary btn-small">Connect</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tabs">
+            <button class="tab active" data-tab="dashboard">Dashboard</button>
+            <button class="tab" data-tab="calibration">Calibration</button>
+            <button class="tab" data-tab="terminal">Terminal</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Dashboard Panel -->
+            <div id="dashboardPanel" class="panel active">
+                <!-- Temperature Card -->
+                <div class="card">
+                    <div class="card-title">Temperature</div>
+                    <div class="temp-display">
+                        <span id="tempValue" class="temp-value">--</span>
+                        <span class="temp-unit">°C</span>
+                        <div id="tempZone" class="temp-zone zone-unknown">--</div>
+                    </div>
+                </div>
+
+                <!-- Battery Card -->
+                <div class="card">
+                    <div class="card-title">Battery</div>
+                    <div class="battery-display">
+                        <div class="battery-icon">
+                            <div id="batteryLevel" class="battery-level" style="width: 0%"></div>
+                        </div>
+                        <div class="battery-info">
+                            <div id="batteryPercent" class="battery-percent">--%</div>
+                            <div id="batteryVoltage" class="battery-voltage">--V</div>
+                            <div id="chargingIndicator" class="charging-indicator" style="display: none">Charging</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mode Card -->
+                <div class="card">
+                    <div class="mode-indicator">
+                        <span class="mode-label">Mode:</span>
+                        <span id="modeValue" class="mode-value work">WORK</span>
+                    </div>
+                    <button id="modeToggleBtn" class="btn btn-secondary" style="width: 100%">Switch to Cal</button>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card">
+                    <div class="card-title">Quick Actions</div>
+                    <div class="quick-actions">
+                        <button id="homeBtn" class="btn btn-secondary">Home</button>
+                        <button id="tempBtn" class="btn btn-secondary">Get Temp</button>
+                        <button id="batteryBtn" class="btn btn-secondary">Battery</button>
+                        <button id="tempTestBtn" class="btn btn-secondary">Temp Test</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calibration Panel -->
+            <div id="calibrationPanel" class="panel">
+                <!-- Mode Warning -->
+                <div class="card">
+                    <div class="mode-indicator">
+                        <span class="mode-label">Current Mode:</span>
+                        <span id="calModeValue" class="mode-value work">WORK</span>
+                    </div>
+                    <p class="text-small text-muted">Most calibration commands require CAL mode.</p>
+                </div>
+
+                <!-- Step Controls -->
+                <div class="card">
+                    <div class="card-title">Step Controls</div>
+                    <div class="step-controls">
+                        <button id="stepMinus100" class="btn btn-secondary step-btn">-100</button>
+                        <button id="stepMinus10" class="btn btn-secondary step-btn">-10</button>
+                        <button id="stepPlus10" class="btn btn-secondary step-btn">+10</button>
+                        <button id="stepPlus100" class="btn btn-secondary step-btn">+100</button>
+                    </div>
+                    <div class="input-row">
+                        <input type="number" id="stepInput" class="input" placeholder="Step position">
+                        <button id="gotoStepBtn" class="btn btn-primary">Go To</button>
+                    </div>
+                </div>
+
+                <!-- Temperature Navigation -->
+                <div class="card">
+                    <div class="card-title">Go To Temperature</div>
+                    <div class="input-row">
+                        <input type="number" id="gotoTempInput" class="input" placeholder="Temperature °C" step="0.5">
+                        <button id="gotoTempBtn" class="btn btn-primary">Go To</button>
+                    </div>
+                </div>
+
+                <!-- Calibration -->
+                <div class="card">
+                    <div class="card-title">Calibrate Point</div>
+                    <p class="text-small text-muted mb-2">Position needle, then enter the temperature shown on dial.</p>
+                    <div class="input-row">
+                        <input type="number" id="calTempInput" class="input" placeholder="Temp (90-101°C)" step="0.5" min="90" max="101">
+                        <button id="calBtn" class="btn btn-success">Calibrate</button>
+                    </div>
+                </div>
+
+                <!-- Zone Status -->
+                <div class="card">
+                    <div class="card-title">Calibration Points</div>
+                    <div class="zone-status">
+                        <div class="zone-item cold">
+                            <div id="coldCount" class="zone-count">0</div>
+                            <div class="zone-name">Cold</div>
+                        </div>
+                        <div class="zone-item green">
+                            <div id="greenCount" class="zone-count">0</div>
+                            <div class="zone-name">Green</div>
+                        </div>
+                        <div class="zone-item hot">
+                            <div id="hotCount" class="zone-count">0</div>
+                            <div class="zone-name">Hot</div>
+                        </div>
+                    </div>
+                    <div class="action-row mt-2">
+                        <button id="listBtn" class="btn btn-secondary btn-small">List</button>
+                        <button id="suggestBtn" class="btn btn-secondary btn-small">Suggest</button>
+                        <button id="saveBtn" class="btn btn-success btn-small">Save</button>
+                    </div>
+                </div>
+
+                <!-- Clear Calibration -->
+                <div class="card">
+                    <div class="card-title">Clear Calibration</div>
+                    <div class="action-row">
+                        <button id="clearColdBtn" class="btn btn-secondary btn-small">Cold</button>
+                        <button id="clearGreenBtn" class="btn btn-secondary btn-small">Green</button>
+                        <button id="clearHotBtn" class="btn btn-secondary btn-small">Hot</button>
+                        <button id="clearAllBtn" class="btn btn-danger btn-small">All</button>
+                    </div>
+                </div>
+
+                <!-- Settings -->
+                <div class="card">
+                    <div class="card-title">Settings</div>
+                    <div class="input-group">
+                        <label class="input-label">Home Offset (0-100)</label>
+                        <div class="input-row">
+                            <input type="number" id="offsetInput" class="input" placeholder="20" min="0" max="100">
+                            <button id="setOffsetBtn" class="btn btn-primary">Set</button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Max Steps (100-10000)</label>
+                        <div class="input-row">
+                            <input type="number" id="maxStepsInput" class="input" placeholder="3000" min="100" max="10000">
+                            <button id="setMaxStepsBtn" class="btn btn-primary">Set</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terminal Panel -->
+            <div id="terminalPanel" class="panel">
+                <div class="card" style="padding: 0;">
+                    <div class="terminal">
+                        <div id="terminalOutput" class="terminal-output"></div>
+                        <div class="terminal-input-row">
+                            <input type="text" id="terminalInput" class="terminal-input" placeholder="Enter command...">
+                            <button id="terminalSendBtn" class="btn btn-primary terminal-send">Send</button>
+                        </div>
+                    </div>
+                </div>
+                <button id="terminalClearBtn" class="btn btn-secondary" style="width: 100%">Clear Terminal</button>
+
+                <!-- Command Reference -->
+                <div class="card mt-2">
+                    <div class="card-title">Command Reference</div>
+                    <div class="text-small text-muted">
+                        <p><strong>Basic:</strong> HOME, TEMP, BATTERY, TEMPTEST, DEBUG</p>
+                        <p><strong>Power:</strong> BOOST [ON/OFF], SHUTDOWN</p>
+                        <p><strong>Mode:</strong> MODE [CAL/WORK]</p>
+                        <p class="mt-1"><strong>Cal Mode Only:</strong></p>
+                        <p>STEP n, GOTO t, CAL t, +/-N</p>
+                        <p>OFFSET n, MAXSTEPS n</p>
+                        <p>LIST, STATUS, SUGGEST, SAVE</p>
+                        <p>CLEAR [ALL/COLD/GREEN/HOT]</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="ble.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
