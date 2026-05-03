@@ -32,7 +32,7 @@ Built around a **Seeed Studio XIAO nRF52840**. Key components:
 - Momentary button for power management (deep sleep after 10 min idle)
 - JST connector for the stepper motor coils
 
-The PCB was custom manufactured and assembled. KiCad source files, schematic, and BOM are in `hardware/`.
+The PCB was custom manufactured and assembled. The dial face is a custom design with a non-linear scale — the green zone (92–97°C) is expanded for precision while the cold and hot extremes are compressed. The SVG is in `hardware/dial_face.svg`. KiCad source files, schematic, and BOM are in `hardware/`.
 
 ## Enclosure
 
