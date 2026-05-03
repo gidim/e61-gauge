@@ -1,6 +1,6 @@
 # Rocket Gauge
 
-An analog temperature gauge for rocket engine monitoring. A custom PCB drives a VID6606 stepper motor gauge needle, reading temperature from an NTC thermistor. The gauge connects via BLE to a web app for calibration and real-time monitoring.
+An analog temperature gauge for E61 espresso machines. A custom PCB drives a VID6606 stepper motor gauge needle, reading temperature from an NTC thermistor. The gauge connects via BLE to a web app for calibration and real-time monitoring.
 
 The dial has a non-linear scale (0–150°C) with an expanded green zone at 92–97°C for precision in the critical temperature range.
 
