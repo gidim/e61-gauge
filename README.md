@@ -13,7 +13,7 @@ The dial has a non-linear scale (0–150°C) with an expanded green zone at 92�
   &nbsp;
   <img src="media/render_front.png" width="24%"/>
   &nbsp;
-  <img src="media/pcb_render.png" width="24%"/>
+  <img src="media/pcb_render_v2.png" width="24%"/>
   &nbsp;
   <img src="media/build_internals.jpg" width="24%"/>
 </p>
