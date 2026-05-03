@@ -5,7 +5,7 @@ An analog temperature gauge for rocket engine monitoring. A custom PCB drives a 
 The dial has a non-linear scale (0–150°C) with an expanded green zone at 92–97°C for precision in the critical temperature range.
 
 <p align="center">
-  <img src="media/render_assembly.png" width="480"/>
+  <img src="media/hero.jpg" width="480"/>
 </p>
 
 <p align="center">
