@@ -32,11 +32,11 @@ Built around a **Seeed Studio XIAO nRF52840**. Key components:
 - Momentary button for power management (deep sleep after 10 min idle)
 - JST connector for the stepper motor coils
 
-KiCad source files, schematic, and BOM are in `hardware/`.
+The PCB was custom manufactured and assembled. KiCad source files, schematic, and BOM are in `hardware/`.
 
 ## Enclosure
 
-Fusion 360 source (`enclosure/gauge_enclosure.f3z`), STEP, and STL files for the enclosure are in `enclosure/`.
+The enclosure was SLM (selective laser melting) 3D printed in metal and hand-sanded to achieve the chrome-like finish. Fusion 360 source (`enclosure/gauge_enclosure.f3z`), STEP, and STL files are in `enclosure/`.
 
 ### KiCad libraries
 
