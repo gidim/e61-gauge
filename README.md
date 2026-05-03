@@ -4,6 +4,16 @@ An analog temperature gauge for rocket engine monitoring. A custom PCB drives a 
 
 The dial has a non-linear scale (0–150°C) with an expanded green zone at 92–97°C for precision in the critical temperature range.
 
+![Rocket Gauge](media/render_assembly.png)
+
+| | |
+|---|---|
+| ![Transparent view](media/render_transparent.png) | ![Build internals](media/build_internals.jpg) |
+
+> Demo video: [media/demo.mov](media/demo.mov)
+
+---
+
 ## Hardware
 
 Built around a **Seeed Studio XIAO nRF52840**. Key components:
@@ -15,6 +25,9 @@ Built around a **Seeed Studio XIAO nRF52840**. Key components:
 - JST connector for the stepper motor coils
 
 KiCad source files, schematic, BOM, and 3D model are in `hardware/`.
+
+| ![Front view](media/render_front.png) | ![Enclosure halves](media/build_enclosure_halves.jpg) |
+|---|---|
 
 ### KiCad libraries
 
