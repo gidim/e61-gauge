@@ -177,7 +177,8 @@ void sleepNow(){
   bothPrintln("Going to sleep...");
   delay(100); // Allow message to send
 
-  // Safe shutdown: motor pins first
+  // De-energize motor: disable driver and release all pins to stop coil current
+  myStepper.disableOutputs();
   digitalWrite(enabPin, LOW);
   digitalWrite(dirPin, LOW);
   digitalWrite(stepPin, LOW);
@@ -196,15 +197,9 @@ void sleepNow(){
     delay(200);
   }
 
-  // Stop BLE advertising to save power
+  // Stop BLE advertising
   Bluefruit.Advertising.stop();
   delay(200);
-
-  // Drain any pending SoftDevice events before System OFF
-  for (int i = 0; i < 10; i++) {
-    sd_app_evt_wait();
-    delay(50);
-  }
 
   // Turn off Serial
   Serial.end();
@@ -214,12 +209,13 @@ void sleepNow(){
                            NRF_GPIO_PIN_PULLUP,
                            NRF_GPIO_PIN_SENSE_LOW);
 
-  // Enter System OFF (~1µA) - retry until SoftDevice accepts it
-  while (1) {
-    sd_power_system_off();
-    // If we get here, SoftDevice had pending events - drain and retry
-    sd_app_evt_wait();
-  }
+  // Shut down SoftDevice to release hardware ownership, then
+  // write directly to the power register - guaranteed, cannot fail
+  sd_softdevice_disable();
+  NRF_POWER->SYSTEMOFF = 1;
+
+  // Unreachable - chip is off
+  while(1);
 }
 
 // ---------- Flash storage functions ----------
