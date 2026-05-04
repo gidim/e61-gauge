@@ -186,6 +186,10 @@ void sleepNow(){
   // Turn off boost
   digitalWrite(boostPin, LOW);
 
+  // Disable battery voltage divider
+  pinMode(VBAT_ENABLE, OUTPUT);
+  digitalWrite(VBAT_ENABLE, HIGH);
+
   // Disconnect BLE if connected
   if(Bluefruit.connected()){
     Bluefruit.disconnect(0);
